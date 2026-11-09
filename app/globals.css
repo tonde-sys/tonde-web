@@ -151,7 +151,10 @@
   .hero-title {
     font-family: var(--font-serif);
     font-weight: 700;
-    font-size: clamp(3.15rem, 7.35vw, 7.25rem);
+    /* Les titres sont révélés par masque ligne par ligne : une ligne qui passe
+       à la ligne se retrouve rognée. 6vw garantit que la plus longue
+       (« quand vient son tour ») tient dans la colonne partagée avec l’illustration. */
+    font-size: clamp(2.5rem, 6vw, 6.6rem);
     line-height: 0.96;
     letter-spacing: -0.042em;
   }
@@ -564,6 +567,125 @@
   }
 }
 
+/* Scène illustrée du hero — une seule boucle de 5,6 s pour que tous les
+   mouvements (respiration, clignement, appui, ticket, écran) restent en phase. */
+@keyframes scene-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.018);
+  }
+}
+
+@keyframes scene-blink {
+  0%,
+  93%,
+  100% {
+    transform: scaleY(1);
+  }
+  95.5% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes scene-tap {
+  0%,
+  44% {
+    transform: rotate(0deg);
+  }
+  54%,
+  62% {
+    transform: rotate(-13deg);
+  }
+  74%,
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes scene-ticket {
+  0%,
+  62% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  65% {
+    opacity: 1;
+  }
+  73% {
+    transform: translateY(13px);
+    opacity: 1;
+  }
+  86% {
+    transform: translateY(13px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@keyframes scene-screen {
+  0%,
+  54% {
+    fill: #121a2c;
+  }
+  60% {
+    fill: #6c47ff;
+  }
+  70%,
+  100% {
+    fill: #121a2c;
+  }
+}
+
+@keyframes scene-halo {
+  0%,
+  54% {
+    opacity: 0;
+  }
+  59% {
+    opacity: 0.45;
+  }
+  68%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.scene-breathe {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: scene-breathe 3.6s ease-in-out infinite;
+}
+
+.scene-blink {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: scene-blink 4.8s ease-in-out infinite;
+}
+
+.scene-arm {
+  transform-box: fill-box;
+  transform-origin: 100% 100%;
+  animation: scene-tap 5.6s ease-in-out infinite;
+}
+
+.scene-ticket {
+  animation: scene-ticket 5.6s ease-in-out infinite;
+}
+
+.scene-screen {
+  animation: scene-screen 5.6s ease-in-out infinite;
+}
+
+.scene-halo {
+  animation: scene-halo 5.6s ease-in-out infinite;
+}
+
 @media (min-width: 640px) {
   .section-shell {
     width: min(calc(100% - 4rem), 80rem);
@@ -573,6 +695,14 @@
 @media (min-width: 1024px) {
   .section-shell {
     width: min(calc(100% - 6rem), 80rem);
+  }
+}
+
+/* 1024–1279 px : la colonne de texte partage la grille avec l’illustration.
+   Sans cette réduction, « L’attente n’est pas » casse et laisse « pas » seul. */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 5.6vw, 4.4rem);
   }
 }
 

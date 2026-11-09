@@ -121,7 +121,7 @@ export function Navigation() {
                 TONDE
               </span>
               <span
-                className={`mt-0.5 text-[9px] font-bold uppercase tracking-[0.28em] transition-colors duration-500 ${
+                className={`mt-0.5 whitespace-nowrap text-[9px] font-bold uppercase tracking-[0.28em] transition-colors duration-500 ${
                   onLight ? "text-brand-leaf" : "text-white/55"
                 }`}
               >
@@ -139,7 +139,7 @@ export function Navigation() {
                     <a
                       href={`#${link.id}`}
                       aria-current={isActive ? "true" : undefined}
-                      className={`relative block rounded-full px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 ${
+                      className={`relative block whitespace-nowrap rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 xl:px-3.5 ${
                         onLight
                           ? isActive
                             ? "text-brand-deep"
@@ -167,7 +167,7 @@ export function Navigation() {
           <div className="flex items-center gap-2">
             <Link
               href="/login"
-              className={`hidden rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 sm:block ${
+              className={`hidden whitespace-nowrap rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 sm:block ${
                 onLight ? "text-brand-soil/65 hover:text-brand-deep" : "text-white/65 hover:text-white"
               }`}
             >

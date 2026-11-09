@@ -31,3 +31,7 @@ next-env.d.ts
 
 # sources brutes des visuels (les .webp optimisés sont versionnés)
 /public/assets/editorial/*.png
+
+# artefacts de build temporaires
+/.next.bak/
+/.next.old/

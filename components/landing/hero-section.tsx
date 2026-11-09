@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowLeft, ArrowRight, MapPin, Pause, Play, Ticket } from "lucide-react";
 
+import { HeroIllustration } from "@/components/landing/hero-illustration";
 import { EASE } from "@/lib/motion";
 
 const AUTOPLAY_DELAY = 7000;
@@ -171,7 +172,7 @@ export function HeroSection() {
         </motion.div>
 
         <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-12 lg:py-8">
-          <div className="lg:col-span-9 xl:col-span-8">
+          <div className="lg:col-span-7 xl:col-span-8">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={active}
@@ -246,10 +247,12 @@ export function HeroSection() {
           <motion.aside
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1, ease: EASE }}
-            className="hidden self-end lg:col-span-3 lg:col-start-10 lg:block xl:col-span-4 xl:col-start-9"
+            transition={{ duration: 0.8, delay: 0.95, ease: EASE }}
+            className="mx-auto w-full max-w-[420px] lg:col-span-5 lg:col-start-8 lg:mx-0 lg:max-w-none xl:col-span-4 xl:col-start-9"
           >
-            <div className="ml-auto max-w-[300px] border-l border-brand-sprout/70 bg-[rgba(10,14,26,0.5)] py-5 pl-6 pr-5 backdrop-blur-[3px]">
+            <HeroIllustration />
+
+            <div className="mt-5 border-l border-brand-sprout/70 bg-[rgba(10,14,26,0.55)] py-3 pl-5 pr-4 backdrop-blur-[3px]">
               <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-brand-sprout">
                 {slide.tag}
               </span>
@@ -259,7 +262,7 @@ export function HeroSection() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  className="mt-3 font-serif text-xl italic leading-snug text-white/90"
+                  className="mt-2 text-base italic leading-snug text-white/85"
                 >
                   {slide.chapter}
                 </motion.p>
