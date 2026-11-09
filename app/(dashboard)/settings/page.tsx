@@ -1,11 +1,23 @@
+import { PagePlaceholder } from '@/components/app/page-placeholder';
+
 export default function SettingsPage() {
   return (
-    <div style={{ padding: '24px', fontFamily: 'Inter, sans-serif' }}>
-      <h1 style={{ fontSize: '20px', fontWeight: 700, color: '#f1f5f9', marginBottom: '8px' }}>Paramètres</h1>
-      <div style={{ backgroundColor: '#1A2235', borderRadius: '12px', border: '1px dashed #334155',
-        height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontSize: '16px', color: '#475569' }}>Page en construction</p>
-      </div>
-    </div>
+    <PagePlaceholder
+      chapter="03"
+      title={
+        <>
+          Paramètres,
+          <span className="font-normal italic text-brand-leaf"> à configurer plus tard.</span>
+        </>
+      }
+      description="La configuration institutionnelle — organisation, rôles, seuils d’alerte — n’est pas encore exposée. Les valeurs affichées dans le cockpit restent des valeurs de démonstration."
+      planned={[
+        { label: 'Organisation', detail: 'Identité de l’institution, logo, fuseau horaire et langue par défaut.' },
+        { label: 'Rôles et permissions', detail: 'SUPER_ADMIN, ADMIN_ORG, SUPERVISEUR et ADMIN_AGENCE avec périmètre explicite.' },
+        { label: 'Seuils d’alerte', detail: 'Durée d’attente critique, inactivité d’un guichet, taux d’abandon toléré.' },
+        { label: 'Intégrations', detail: 'Rattachement au backend, clés d’API et webhooks sortants.' },
+      ]}
+      action={{ label: 'Retour au cockpit', href: '/dashboard' }}
+    />
   );
 }

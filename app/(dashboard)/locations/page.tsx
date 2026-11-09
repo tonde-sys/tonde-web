@@ -1,11 +1,23 @@
+import { PagePlaceholder } from '@/components/app/page-placeholder';
+
 export default function LocationsPage() {
   return (
-    <div style={{ padding: '24px', fontFamily: 'Inter, sans-serif' }}>
-      <h1 style={{ fontSize: '20px', fontWeight: 700, color: '#f1f5f9', marginBottom: '8px' }}>Agences / Lieux</h1>
-      <div style={{ backgroundColor: '#1A2235', borderRadius: '12px', border: '1px dashed #334155',
-        height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <p style={{ fontSize: '16px', color: '#475569' }}>Page en construction</p>
-      </div>
-    </div>
+    <PagePlaceholder
+      chapter="01"
+      title={
+        <>
+          Agences &amp; lieux,
+          <span className="font-normal italic text-brand-leaf"> encore à cartographier.</span>
+        </>
+      }
+      description="Le référentiel des sites physiques — sièges, agences, guichets et horaires — n’est pas encore branché. C’est pourtant la base de tout cloisonnement multi-agences."
+      planned={[
+        { label: 'Référentiel des sites', detail: 'Création, édition et archivage des agences rattachées à une organisation.' },
+        { label: 'Guichets et services', detail: 'Nombre de guichets par site, services associés et capacité de traitement.' },
+        { label: 'Horaires d’ouverture', detail: 'Plages horaires par jour, exceptions et jours fériés locaux.' },
+        { label: 'Rattachement des agents', detail: 'Affectation d’un agent à une agence et à un guichet précis.' },
+      ]}
+      action={{ label: 'Voir les agents', href: '/agents' }}
+    />
   );
 }

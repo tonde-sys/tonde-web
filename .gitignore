@@ -25,3 +25,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# artefacts de test / outils
+/.audit/
+/.perch/
+
+# sources brutes des visuels (les .webp optimisés sont versionnés)
+/public/assets/editorial/*.png

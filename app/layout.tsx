@@ -1,6 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
+
+import { MotionProvider } from "@/components/motion-provider";
 
 import "./globals.css";
 
@@ -10,16 +12,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-jetbrains",
+  variable: "--font-manrope",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "TONDE — Gestion intelligente des files d’attente",
+  icons: { icon: "/icon.svg" },
+  title: "TONDE — Transformer l’attente en dignité",
   description:
-    "TONDE transforme l’attente en une expérience digne pour les banques, hôpitaux et institutions africaines modernes.",
+    "TONDE est l’infrastructure de gestion de files d’attente pensée pour les banques, hôpitaux et institutions d’Afrique de l’Est : temps réel, résilience hors ligne et cloisonnement des données.",
 };
 
 export default function RootLayout({
@@ -28,11 +31,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
-      <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased`}
-      >
-        {children}
+    <html lang="fr" className={`${inter.variable} ${manrope.variable}`}>
+      <body className="font-sans antialiased">
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

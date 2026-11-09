@@ -23,7 +23,7 @@
   <text x="404" y="780" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="42" font-weight="700">B2</text>
   <rect x="78" y="862" width="564" height="130" rx="28" fill="#6C47FF"/>
   <text x="110" y="922" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Recevoir les mises à jour</text>
-  <text x="110" y="960" fill="#EDE9FE" font-family="Inter, Arial, sans-serif" font-size="20">Notification dès que le ticket approche</text>
+  <text x="110" y="960" fill="#00D4FF" font-family="Inter, Arial, sans-serif" font-size="20">Notification dès que le ticket approche</text>
   <rect x="78" y="1032" width="564" height="130" rx="28" fill="#10182A" stroke="#334155"/>
   <text x="110" y="1092" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="20">Mode</text>
   <text x="110" y="1130" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="600">Mockup conceptuel remplaçable</text>
