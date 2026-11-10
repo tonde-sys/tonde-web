@@ -567,123 +567,292 @@
   }
 }
 
-/* Scène illustrée du hero — une seule boucle de 5,6 s pour que tous les
-   mouvements (respiration, clignement, appui, ticket, écran) restent en phase. */
-@keyframes scene-breathe {
+/* ==========================================================================
+   Scène isométrique du hero — « L’attente change de dimension »
+   Une seule boucle de 10 s, quatre temps :
+     0–20 %   le problème      la file stagne, l’écran affiche B-042
+     20–50 %  TONDE intervient le téléphone monte, ticket B-049
+     50–80 %  synchronisation  les numéros avancent, le guichet s’allume
+     80–100 % résultat         le client se présente, la salle s’éclaire
+   Toutes les animations partagent la même durée : elles restent en phase.
+   ========================================================================== */
+
+@keyframes ts-phone {
   0%,
-  100% {
-    transform: scaleY(1);
+  16% {
+    opacity: 0;
+    transform: translateY(46px) scale(0.94);
   }
-  50% {
-    transform: scaleY(1.018);
+  25% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1);
+  }
+  33% {
+    transform: translateY(0) scale(1);
+  }
+  55% {
+    transform: translateY(-3px) scale(1);
+  }
+  78%,
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-@keyframes scene-blink {
+@keyframes ts-walker {
   0%,
-  93%,
-  100% {
-    transform: scaleY(1);
+  14% {
+    opacity: 0;
+    transform: translate(0, 0);
   }
-  95.5% {
-    transform: scaleY(0.08);
+  23% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  58% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  84%,
+  100% {
+    opacity: 1;
+    transform: translate(46.8px, 5px);
   }
 }
 
-@keyframes scene-tap {
+@keyframes ts-counter-light {
   0%,
-  44% {
-    transform: rotate(0deg);
-  }
-  54%,
   62% {
-    transform: rotate(-13deg);
+    opacity: 0.16;
   }
-  74%,
+  72%,
   100% {
-    transform: rotate(0deg);
+    opacity: 1;
   }
 }
 
-@keyframes scene-ticket {
+@keyframes ts-flood {
   0%,
-  62% {
-    transform: translateY(0);
+  78% {
     opacity: 0;
   }
+  94%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ts-end {
+  0%,
+  87% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  94%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ts-kiosk-screen {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes ts-live {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes ts-n1 {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ts-n2 {
+  0%,
+  49% {
+    opacity: 0;
+  }
+  50%,
+  56% {
+    opacity: 1;
+  }
+  57%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ts-n3 {
+  0%,
+  56% {
+    opacity: 0;
+  }
+  57%,
+  63% {
+    opacity: 1;
+  }
+  64%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ts-n4 {
+  0%,
+  63% {
+    opacity: 0;
+  }
+  64%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes ts-c4 {
+  0%,
   65% {
     opacity: 1;
   }
-  73% {
-    transform: translateY(13px);
+  66%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ts-c3 {
+  0%,
+  65% {
+    opacity: 0;
+  }
+  66%,
+  72% {
     opacity: 1;
   }
-  86% {
-    transform: translateY(13px);
-    opacity: 0;
-  }
+  73%,
   100% {
-    transform: translateY(0);
     opacity: 0;
   }
 }
 
-@keyframes scene-screen {
+@keyframes ts-c2 {
   0%,
-  54% {
-    fill: #121a2c;
+  72% {
+    opacity: 0;
   }
-  60% {
-    fill: #6c47ff;
+  73%,
+  79% {
+    opacity: 1;
   }
-  70%,
+  80%,
   100% {
-    fill: #121a2c;
+    opacity: 0;
   }
 }
 
-@keyframes scene-halo {
+@keyframes ts-c1 {
   0%,
-  54% {
+  79% {
     opacity: 0;
   }
-  59% {
-    opacity: 0.45;
+  80%,
+  85% {
+    opacity: 1;
   }
-  68%,
+  86%,
   100% {
     opacity: 0;
   }
 }
 
-.scene-breathe {
+@keyframes ts-c0 {
+  0%,
+  85% {
+    opacity: 0;
+  }
+  86%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.ts-phone {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: scene-breathe 3.6s ease-in-out infinite;
+  animation: ts-phone 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
-.scene-blink {
+.ts-walker {
+  animation: ts-walker 10s cubic-bezier(0.5, 0, 0.35, 1) infinite;
+}
+
+.ts-counter-light {
+  animation: ts-counter-light 10s ease-in-out infinite;
+}
+
+.ts-flood {
+  animation: ts-flood 10s ease-in-out infinite;
+}
+
+.ts-end {
   transform-box: fill-box;
   transform-origin: 50% 50%;
-  animation: scene-blink 4.8s ease-in-out infinite;
+  animation: ts-end 10s ease-out infinite;
 }
 
-.scene-arm {
-  transform-box: fill-box;
-  transform-origin: 100% 100%;
-  animation: scene-tap 5.6s ease-in-out infinite;
+.ts-kiosk-screen {
+  animation: ts-kiosk-screen 2.4s ease-in-out infinite;
 }
 
-.scene-ticket {
-  animation: scene-ticket 5.6s ease-in-out infinite;
+.ts-live {
+  animation: ts-live 1.6s ease-in-out infinite;
 }
 
-.scene-screen {
-  animation: scene-screen 5.6s ease-in-out infinite;
+.ts-n1 {
+  animation: ts-n1 10s steps(1, end) infinite;
 }
-
-.scene-halo {
-  animation: scene-halo 5.6s ease-in-out infinite;
+.ts-n2 {
+  animation: ts-n2 10s steps(1, end) infinite;
+}
+.ts-n3 {
+  animation: ts-n3 10s steps(1, end) infinite;
+}
+.ts-n4 {
+  animation: ts-n4 10s steps(1, end) infinite;
+}
+.ts-c4 {
+  animation: ts-c4 10s steps(1, end) infinite;
+}
+.ts-c3 {
+  animation: ts-c3 10s steps(1, end) infinite;
+}
+.ts-c2 {
+  animation: ts-c2 10s steps(1, end) infinite;
+}
+.ts-c1 {
+  animation: ts-c1 10s steps(1, end) infinite;
+}
+.ts-c0 {
+  animation: ts-c0 10s steps(1, end) infinite;
 }
 
 @media (min-width: 640px) {
@@ -741,5 +910,37 @@
 
   .marquee-track {
     animation: none;
+  }
+
+  /* La scène isométrique se figerait sur son premier temps (la file qui
+     stagne). On préfère l’état résolu : ticket pris, guichet éclairé. */
+  .ts-phone {
+    opacity: 1;
+  }
+  .ts-end {
+    display: none;
+  }
+  .ts-n1,
+  .ts-n2,
+  .ts-n3 {
+    opacity: 0;
+  }
+  .ts-n4 {
+    opacity: 1;
+  }
+  .ts-c4,
+  .ts-c3,
+  .ts-c2,
+  .ts-c1 {
+    opacity: 0;
+  }
+  .ts-c0 {
+    opacity: 1;
+  }
+  .ts-counter-light {
+    opacity: 1;
+  }
+  .ts-walker {
+    transform: translate(46.8px, 5px);
   }
 }
