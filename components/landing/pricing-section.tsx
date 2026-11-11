@@ -10,46 +10,71 @@ const plans = [
   {
     id: "starter",
     name: "Starter",
-    description: "Pour les agences individuelles qui veulent structurer rapidement l’accueil.",
-    commercialModel: "Pilote cadré",
+    description:
+      "Pour les cliniques privées, centres médicaux, petites agences de services, centres de formation et universités avec 1 à 2 guichets.",
+    price: "174 955",
+    currency: "FBu",
+    period: "/ mois",
+    capacity: "1 site · jusqu'à 3 guichets",
+    tickets: "Jusqu'à 3 000 tickets/mois",
     features: [
-      "Déploiement site unique",
-      "Mise en file standard",
-      "Suivi des tickets en temps réel",
-      "Accompagnement de démarrage",
+      "Queue Engine temps réel",
+      "Terminal Guichet (Tauri/React)",
+      "Afficheur TV salle d'attente",
+      "Statistiques de base",
+      "1 site / jusqu'à 3 guichets",
+      "Jusqu'à 3 000 tickets/mois",
     ],
     cta: "Demander une démo",
     popular: false,
+    badge: null,
   },
   {
     id: "business",
     name: "Business",
     description:
-      "Pour les institutions qui veulent réconciliation Mobile Money et rapports avancés.",
-    commercialModel: "Sur étude",
+      "Pour les banques régionales, hôpitaux généraux, administrations publiques et réseaux multi-agences.",
+    price: "399 000",
+    currency: "FBu",
+    period: "/ mois",
+    capacity: "Jusqu'à 3 sites · 15 guichets inclus",
+    tickets: "Jusqu'à 20 000 tickets/mois",
     features: [
-      "Réconciliation Mobile Money",
-      "Rapports avancés",
-      "Supervision multi-services",
-      "KPIs temps réel pour le management",
+      "Tout STARTER inclus",
+      "Support multi-agences",
+      "Dashboard Analytics avancé",
+      "Temps moyen d'attente & perf agents",
+      "Notifications SMS / WhatsApp",
+      "Mode Offline-first avec sync local",
+      "Jusqu'à 3 sites · 15 guichets inclus",
+      "Jusqu'à 20 000 tickets/mois",
     ],
-    cta: "Parler à l’équipe",
+    cta: "Parler à l'équipe",
     popular: true,
+    badge: "Recommandé",
   },
   {
     id: "enterprise",
     name: "Enterprise",
     description:
-      "Pour les réseaux multi-agences avec exigences fortes de pilotage et d’intégration.",
-    commercialModel: "Sur mesure",
+      "Pour les grandes banques commerciales, hôpitaux nationaux, opérateurs télécoms et ministères.",
+    price: "699 000",
+    currency: "FBu",
+    period: "/ mois",
+    capacity: "Multi-sites illimité · guichets illimités",
+    tickets: "Tickets illimités",
     features: [
-      "Déploiement multi-agences",
-      "Analytics prédictifs à terme",
-      "Support dédié",
-      "Cadrage et accompagnement sur mesure",
+      "Tout BUSINESS inclus",
+      "Déploiement On-Premise / Hybride dédié",
+      "Intégration API & ERP / Core Banking / HIS",
+      "SLA garanti 99,9 % + Support 24/7 dédié",
+      "Formation et accompagnement sur site",
+      "Multi-sites illimité / guichets illimités",
+      "Volume de tickets illimité",
     ],
     cta: "Construire une offre",
     popular: false,
+    badge: null,
   },
 ];
 
@@ -75,22 +100,22 @@ export function PricingSection() {
               Tarification
             </span>
             <h2 className="display-lg mt-6 text-brand-deep">
-              Trois cadres commerciaux,
-              <span className="font-normal italic text-brand-leaf"> aucun prix inventé.</span>
+              Des prix clairs,
+              <span className="font-normal italic text-brand-leaf"> adaptés à votre structure.</span>
             </h2>
           </div>
           <div className="lg:col-span-5">
             <p className="text-[15px] leading-8 text-brand-soil/75">
-              Les montants finaux dépendent du périmètre, du nombre de sites, du niveau d’accompagnement et des
-              intégrations attendues. Choisissez le cadre qui correspond à votre maturité.
+              Trois plans pensés pour chaque niveau de maturité — de la clinique privée à la grande banque commerciale. Paiement mensuel en Francs Burundais, sans frais cachés.
             </p>
           </div>
         </div>
 
         <div className="mt-12 overflow-hidden rounded-[28px] border border-brand-forest/12 bg-brand-cream">
+          {/* Tab bar */}
           <div
             role="tablist"
-            aria-label="Cadres commerciaux TONDE"
+            aria-label="Plans tarifaires TONDE"
             onKeyDown={(event) => {
               if (event.key === "ArrowRight") {
                 event.preventDefault();
@@ -129,16 +154,16 @@ export function PricingSection() {
                         isActive ? "text-brand-sprout" : "text-brand-soil/45"
                       }`}
                     >
-                      {plan.commercialModel}
+                      {plan.price} {plan.currency}{plan.period}
                     </span>
                   </span>
-                  {plan.popular && (
+                  {plan.badge && (
                     <span
                       className={`rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.16em] ${
                         isActive ? "bg-brand-sprout text-brand-deep" : "bg-brand-sprout/60 text-brand-deep"
                       }`}
                     >
-                      Recommandé
+                      {plan.badge}
                     </span>
                   )}
                 </button>
@@ -146,6 +171,7 @@ export function PricingSection() {
             })}
           </div>
 
+          {/* Plan panel */}
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={active.id}
@@ -158,14 +184,28 @@ export function PricingSection() {
               transition={{ duration: 0.4, ease: EASE }}
               className="grid gap-10 p-6 sm:p-9 lg:grid-cols-12 lg:gap-12 lg:p-12"
             >
+              {/* Price block */}
               <div className="lg:col-span-5">
-                <p className="font-serif text-[2.4rem] font-semibold leading-none tracking-tight text-brand-forest sm:text-[3rem]">
-                  {active.commercialModel}
-                </p>
-                <p className="mt-4 text-sm leading-7 text-brand-soil/70">
-                  Modèle commercial adapté au niveau de maturité du projet.
-                </p>
-                <p className="mt-8 text-[15px] leading-8 text-brand-soil/85">{active.description}</p>
+                <div className="flex items-end gap-2 leading-none">
+                  <span className="font-serif text-[2.6rem] font-bold tracking-tight text-brand-forest sm:text-[3.2rem]">
+                    {active.price}
+                  </span>
+                  <span className="mb-1.5 text-lg font-semibold text-brand-forest/70">
+                    {active.currency}
+                  </span>
+                  <span className="mb-1.5 text-sm text-brand-soil/50">{active.period}</span>
+                </div>
+
+                <div className="mt-4 space-y-1">
+                  <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-brand-leaf">
+                    {active.capacity}
+                  </p>
+                  <p className="text-[12px] font-bold uppercase tracking-[0.16em] text-brand-soil/50">
+                    {active.tickets}
+                  </p>
+                </div>
+
+                <p className="mt-6 text-[15px] leading-8 text-brand-soil/85">{active.description}</p>
 
                 <a href="#contact" className="btn btn-primary mt-8 w-full sm:w-auto">
                   {active.cta}
@@ -173,9 +213,10 @@ export function PricingSection() {
                 </a>
               </div>
 
+              {/* Features list */}
               <div className="lg:col-span-7 lg:border-l lg:border-brand-forest/12 lg:pl-12">
                 <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-soil/45">
-                  Ce que couvre ce cadre
+                  Fonctionnalités incluses
                 </p>
                 <ul className="mt-6 grid gap-4 sm:grid-cols-2">
                   {active.features.map((feature) => (
@@ -191,6 +232,15 @@ export function PricingSection() {
             </motion.div>
           </AnimatePresence>
         </div>
+
+        {/* Disclaimer */}
+        <p className="mt-6 text-center text-[12px] text-brand-soil/45">
+          Tous les prix sont exprimés en Francs Burundais (FBu) · TVA applicable selon la réglementation en vigueur ·{" "}
+          <a href="#contact" className="underline hover:text-brand-forest transition-colors">
+            Contactez-nous
+          </a>{" "}
+          pour un devis personnalisé
+        </p>
       </div>
     </section>
   );
