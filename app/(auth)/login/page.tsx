@@ -105,12 +105,14 @@ export default function LoginPage() {
       <div className="flex w-full flex-col lg:w-[52%]">
         <div className="flex items-center justify-between px-6 pt-6 sm:px-10">
           <Link href="/" className="flex items-center gap-2.5" aria-label="TONDE — retour à l’accueil">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-forest text-brand-sprout">
-              <svg width="16" height="16" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-                <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-                <path d="M11 2V20M2 7L20 15M20 7L2 15" stroke="currentColor" strokeWidth="1.1" strokeOpacity="0.45" />
-              </svg>
-            </span>
+            <img
+              src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+              alt=""
+              width={36}
+              height={36}
+              className="h-9 w-9 shrink-0 rounded-[10px] object-cover"
+              aria-hidden="true"
+            />
             <span className="flex flex-col leading-none">
               <span className="font-serif text-[17px] font-semibold text-brand-deep">TONDE</span>
               <span className="mt-0.5 whitespace-nowrap text-[8px] font-bold uppercase tracking-[0.26em] text-brand-leaf">

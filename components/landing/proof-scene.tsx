@@ -56,8 +56,8 @@ export function ProofScene() {
       <div ref={ref} className="relative overflow-hidden bg-brand-deep">
         <div className="relative h-[78vh] min-h-[520px] w-full overflow-hidden">
           <motion.img
-            src="/assets/editorial/preuve-mobile.webp"
-            alt="Un usager consulte son ticket de file d’attente sur son téléphone devant une agence, dans une rue animée"
+            src="/assets/editorial/Gemini_Generated_Image_wgk2xwwgk2xwwgk2.jpg"
+            alt="Un usager consulte son téléphone sur le trottoir devant une agence, dans une rue animée"
             style={{ y: reduceMotion ? 0 : imageY }}
             className="absolute inset-x-0 -inset-y-[10%] h-[120%] w-full object-cover"
           />

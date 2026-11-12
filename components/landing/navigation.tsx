@@ -91,11 +91,11 @@ export function Navigation() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo-tonde.svg"
-              alt="TONDE logo"
+              src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+              alt=""
               width={36}
               height={36}
-              className="shrink-0 rounded-xl"
+              className="h-9 w-9 shrink-0 rounded-[10px] object-cover"
               aria-hidden="true"
             />
             <span className="flex flex-col leading-none">
@@ -201,7 +201,14 @@ export function Navigation() {
             <div className="flex items-center justify-between px-5 py-5">
               <span className="flex items-center gap-2.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-tonde.svg" alt="TONDE logo" width={32} height={32} className="shrink-0 rounded-xl" />
+                <img
+                  src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 shrink-0 rounded-[9px] object-cover"
+                  aria-hidden="true"
+                />
                 <span className="font-serif text-lg font-semibold">TONDE</span>
               </span>
               <button

@@ -538,7 +538,14 @@ function AdminShell({ children }: { children: ReactNode }) {
       >
         <div className="flex h-16 shrink-0 items-center gap-3 border-b border-white/10 px-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo-tonde.svg" alt="TONDE logo" width={36} height={36} className="shrink-0 rounded-xl" />
+          <img
+            src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+            alt=""
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 rounded-[10px] object-cover"
+            aria-hidden="true"
+          />
           <span className="flex flex-col leading-none">
             <span className="font-serif text-[17px] font-semibold tracking-tight text-white">TONDE</span>
             <span className="mt-1 text-[8px] font-bold uppercase tracking-[0.26em] text-brand-sprout/80">

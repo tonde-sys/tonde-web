@@ -19,7 +19,11 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  icons: { icon: "/icon.svg" },
+  icons: {
+    icon: "/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png",
+    shortcut: "/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png",
+    apple: "/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png",
+  },
   title: "TONDE — Transformer l’attente en dignité",
   description:
     "TONDE est l’infrastructure de gestion de files d’attente pensée pour les banques, hôpitaux et institutions d’Afrique de l’Est : temps réel, résilience hors ligne et cloisonnement des données.",

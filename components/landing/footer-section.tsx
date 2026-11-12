@@ -29,7 +29,15 @@ export function FooterSection() {
       <div className="section-shell">
         <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
           <div className="lg:col-span-5">
-            <a href="#top" className="inline-flex items-baseline gap-3">
+            <a href="#top" className="inline-flex items-center gap-3">
+              <img
+                src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+                alt=""
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-xl object-cover"
+                aria-hidden="true"
+              />
               <span className="font-serif text-[2rem] font-semibold leading-none tracking-tight text-brand-deep">
                 TONDE
               </span>
