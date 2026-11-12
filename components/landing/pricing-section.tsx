@@ -12,7 +12,7 @@ const plans = [
     name: "Starter",
     description:
       "Pour les cliniques privées, centres médicaux, petites agences de services, centres de formation et universités avec 1 à 2 guichets.",
-    price: "174 955",
+    price: "174 900",
     currency: "FBu",
     period: "/ mois",
     capacity: "1 site · jusqu'à 3 guichets",
