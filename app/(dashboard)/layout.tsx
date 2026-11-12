@@ -537,12 +537,8 @@ function AdminShell({ children }: { children: ReactNode }) {
         }`}
       >
         <div className="flex h-16 shrink-0 items-center gap-3 border-b border-white/10 px-5">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-sprout/12 ring-1 ring-brand-sprout/30">
-            <svg width="16" height="16" viewBox="0 0 22 22" fill="none" aria-hidden="true">
-              <path d="M11 2L20 7V15L11 20L2 15V7L11 2Z" stroke="#00d4ff" strokeWidth="1.8" strokeLinejoin="round" />
-              <path d="M11 2V20M2 7L20 15M20 7L2 15" stroke="#00d4ff" strokeWidth="1.1" strokeOpacity="0.45" />
-            </svg>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-tonde.svg" alt="TONDE logo" width={36} height={36} className="shrink-0 rounded-xl" />
           <span className="flex flex-col leading-none">
             <span className="font-serif text-[17px] font-semibold tracking-tight text-white">TONDE</span>
             <span className="mt-1 text-[8px] font-bold uppercase tracking-[0.26em] text-brand-sprout/80">

@@ -89,29 +89,15 @@ export function Navigation() {
             className="group flex items-center gap-2.5"
             aria-label="TONDE — retour en haut"
           >
-            <span
-              className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors duration-500 ${
-                onLight
-                  ? "bg-brand-forest text-brand-sprout"
-                  : "bg-brand-sprout/15 text-brand-sprout ring-1 ring-white/25"
-              }`}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo-tonde.svg"
+              alt="TONDE logo"
+              width={36}
+              height={36}
+              className="shrink-0 rounded-xl"
               aria-hidden="true"
-            >
-              <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
-                <path
-                  d="M11 2L20 7V15L11 20L2 15V7L11 2Z"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M11 2V20M2 7L20 15M20 7L2 15"
-                  stroke="currentColor"
-                  strokeWidth="1.1"
-                  strokeOpacity="0.45"
-                />
-              </svg>
-            </span>
+            />
             <span className="flex flex-col leading-none">
               <span
                 className={`font-serif text-lg font-semibold tracking-tight transition-colors duration-500 ${
@@ -213,7 +199,11 @@ export function Navigation() {
             className="grain fixed inset-0 z-[60] flex flex-col bg-brand-deep text-white"
           >
             <div className="flex items-center justify-between px-5 py-5">
-              <span className="font-serif text-lg font-semibold">TONDE</span>
+              <span className="flex items-center gap-2.5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo-tonde.svg" alt="TONDE logo" width={32} height={32} className="shrink-0 rounded-xl" />
+                <span className="font-serif text-lg font-semibold">TONDE</span>
+              </span>
               <button
                 type="button"
                 onClick={() => setIsMenuOpen(false)}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#3B4FDE"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+    <linearGradient id="path-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0E7FF"/>
+      <stop offset="50%" stop-color="#C7E8FF"/>
+      <stop offset="100%" stop-color="#A5F3FC"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="100" height="100" rx="22" fill="url(#bg-grad)"/>
+  <!-- Queue path icon: S-curve with nodes representing a smart queue flow -->
+  <!-- Left top node circle -->
+  <circle cx="30" cy="22" r="5.5" fill="url(#path-grad)" opacity="0.95"/>
+  <circle cx="30" cy="22" r="2.5" fill="#3B4FDE"/>
+  <!-- Right middle node -->
+  <circle cx="70" cy="52" r="5.5" fill="url(#path-grad)" opacity="0.95"/>
+  <circle cx="70" cy="52" r="2.5" fill="#3B4FDE"/>
+  <!-- Left bottom node -->
+  <circle cx="30" cy="78" r="5.5" fill="url(#path-grad)" opacity="0.95"/>
+  <circle cx="30" cy="78" r="2.5" fill="#3B4FDE"/>
+  <!-- Main S-curve path connecting the nodes -->
+  <path
+    d="M30 27.5 C30 42 55 32 60 42 C65 52 70 46.5 70 46.5"
+    stroke="url(#path-grad)"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.9"
+  />
+  <path
+    d="M70 57.5 C70 68 45 62 40 72 C35 78 30 72.5 30 72.5"
+    stroke="url(#path-grad)"
+    stroke-width="5.5"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.9"
+  />
+  <!-- Right top branch -->
+  <circle cx="72" cy="24" r="4.5" fill="url(#path-grad)" opacity="0.85"/>
+  <circle cx="72" cy="24" r="2" fill="#3B4FDE"/>
+  <path
+    d="M36 22 L67.5 24"
+    stroke="url(#path-grad)"
+    stroke-width="4"
+    stroke-linecap="round"
+    fill="none"
+    opacity="0.75"
+  />
+</svg>
