@@ -6,18 +6,16 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   LayoutDashboard, ListOrdered, MapPin, Users, BarChart3,
   Settings, LogOut, ChevronDown, ChevronRight, Menu, X,
-  Bell, Search, BookOpen, UserCog, Wifi, WifiOff,
+  Bell, Search, BookOpen, UserCog, Wifi, WifiOff, Tv, Smartphone,
 } from 'lucide-react';
+import { TondeStoreProvider, useTondeStore } from '@/store/tonde-store';
+import type { Language, UserRole } from '@/types/tonde';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // TYPES
 // ─────────────────────────────────────────────────────────────────────────────
 
-type Language = 'FR' | 'EN' | 'RN' | 'SW';
 type WsState = 'live' | 'reconnecting' | 'offline';
-type UserRole = 'ADMIN_ORG' | 'SUPERVISOR' | 'AGENT';
-
-interface Agency { id: string; label: string; agencyId: string }
 
 // ─────────────────────────────────────────────────────────────────────────────
 // STATIC DATA
@@ -35,18 +33,13 @@ const navItems = [
 const LANGS: Language[] = ['FR', 'EN', 'RN', 'SW'];
 const langFlags: Record<Language, string> = { FR: '🇫🇷', EN: '🇬🇧', RN: '🇧🇮', SW: '🇹🇿' };
 
-const agencies: Agency[] = [
-  { id: '1', label: 'Banque de la République — Siège', agencyId: 'BUJ-001' },
-  { id: '2', label: 'Banque de la République — Rohero', agencyId: 'BUJ-002' },
-  { id: '3', label: 'Agence Gitega — Centre', agencyId: 'GIT-001' },
-  { id: '4', label: 'Agence Goma Nord', agencyId: 'GOM-001' },
-  { id: '5', label: 'Agence Kigali Centre', agencyId: 'KGL-001' },
-];
-
 const roleConfig: Record<UserRole, { label: string; color: string; bg: string }> = {
+  SUPER_ADMIN: { label: 'SUPER_ADMIN', color: '#00d4ff', bg: 'rgba(0,212,255,0.12)' },
   ADMIN_ORG: { label: 'ADMIN_ORG', color: '#6c47ff', bg: 'rgba(108,71,255,0.10)' },
-  SUPERVISOR: { label: 'SUPERVISOR', color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)' },
+  ADMIN_AGENCE: { label: 'ADMIN_AGENCE', color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)' },
+  SUPERVISEUR: { label: 'SUPERVISEUR', color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)' },
   AGENT: { label: 'AGENT', color: '#10b981', bg: 'rgba(16,185,129,0.12)' },
+  CLIENT: { label: 'CLIENT', color: '#64708a', bg: 'rgba(100,112,138,0.12)' },
 };
 
 const logoutLabel: Record<Language, string> = { FR: 'Déconnexion', EN: 'Sign out', RN: 'Gusohoka', SW: 'Toka' };
@@ -204,8 +197,8 @@ function NotificationsBell() {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function AgencySelector() {
+  const { branches, activeBranch, setActiveBranchId } = useTondeStore();
   const [open, setOpen] = useState(false);
-  const [current, setCurrent] = useState<Agency>(agencies[0]);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -225,9 +218,9 @@ function AgencySelector() {
       >
         <span className="flex min-w-0 flex-col items-start">
           <span className="max-w-[190px] truncate text-[12px] font-semibold leading-tight text-brand-deep">
-            {current.label}
+            {activeBranch.name}
           </span>
-          <span className="app-num text-[10px] leading-tight text-brand-soil/45">{current.agencyId}</span>
+          <span className="app-num text-[10px] leading-tight text-brand-soil/45">{activeBranch.code}</span>
         </span>
         <ChevronDown size={13} className="shrink-0 text-brand-soil/40" />
       </button>
@@ -235,21 +228,21 @@ function AgencySelector() {
       {open && (
         <div className="app-surface absolute left-0 top-full z-50 mt-2 min-w-[290px] overflow-hidden shadow-[0_24px_60px_-30px_rgba(10,14,26,0.45)]">
           <p className="app-label px-4 pb-1.5 pt-3">Changer d’agence</p>
-          {agencies.map((ag) => {
-            const isCurrent = ag.id === current.id;
+          {branches.map((ag) => {
+            const isCurrent = ag.id === activeBranch.id;
             return (
               <button
                 key={ag.id}
                 type="button"
-                onClick={() => { setCurrent(ag); setOpen(false); }}
+                onClick={() => { setActiveBranchId(ag.id); setOpen(false); }}
                 className={`flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left transition-colors ${
                   isCurrent ? 'bg-brand-forest/6' : 'hover:bg-brand-forest/4'
                 }`}
               >
                 <span className={`text-[13px] ${isCurrent ? 'font-semibold text-brand-forest' : 'text-brand-soil/80'}`}>
-                  {ag.label}
+                  {ag.name}
                 </span>
-                <span className="app-num text-[10px] text-brand-soil/40">{ag.agencyId}</span>
+                <span className="app-num text-[10px] text-brand-soil/40">{ag.code}</span>
               </button>
             );
           })}
@@ -397,9 +390,9 @@ function GlobalSearch({ lang }: { lang: Language }) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function ProfileMenu({ lang, onLogout }: { lang: Language; onLogout: () => void }) {
+  const { role } = useTondeStore();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const role: UserRole = 'ADMIN_ORG';
   const roleCfg = roleConfig[role];
 
   useEffect(() => {
@@ -513,7 +506,7 @@ function ProfileMenu({ lang, onLogout }: { lang: Language; onLogout: () => void 
 function AdminShell({ children }: { children: ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [lang, setLang] = useState<Language>('FR');
+  const { lang, setLang } = useTondeStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => { setSidebarOpen(false); }, [pathname]);
@@ -585,6 +578,34 @@ function AdminShell({ children }: { children: ReactNode }) {
               );
             })}
           </ul>
+
+          <p className="mb-2 mt-6 px-3 text-[9px] font-bold uppercase tracking-[0.24em] text-white/30">
+            Écosystème
+          </p>
+          <ul className="flex flex-col gap-0.5">
+            <li>
+              <Link
+                href="/tv"
+                target="_blank"
+                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-white/60 transition-colors hover:bg-white/6 hover:text-brand-sprout"
+              >
+                <Tv size={16} strokeWidth={1.9} />
+                <span>Écran salle (TV)</span>
+                <ChevronRight size={12} className="ml-auto opacity-40" />
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/app"
+                target="_blank"
+                className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-[13px] font-medium text-white/60 transition-colors hover:bg-white/6 hover:text-brand-sprout"
+              >
+                <Smartphone size={16} strokeWidth={1.9} />
+                <span>App Android (.APK)</span>
+                <ChevronRight size={12} className="ml-auto opacity-40" />
+              </Link>
+            </li>
+          </ul>
         </nav>
 
         <div className="border-t border-white/10 px-3 py-4">
@@ -640,5 +661,9 @@ function AdminShell({ children }: { children: ReactNode }) {
 }
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
-  return <AdminShell>{children}</AdminShell>;
+  return (
+    <TondeStoreProvider>
+      <AdminShell>{children}</AdminShell>
+    </TondeStoreProvider>
+  );
 }
