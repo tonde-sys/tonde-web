@@ -8,11 +8,11 @@ import { ArrowUpRight, Download, Menu, X } from "lucide-react";
 import { EASE } from "@/lib/motion";
 
 const navLinks = [
-  { id: "product", label: "Le problème" },
-  { id: "ecosystem", label: "Écosystème" },
-  { id: "voices", label: "Terrain" },
-  { id: "pricing", label: "Tarifs" },
-  { id: "faq", label: "FAQ" },
+  { id: "product", label: "Produits" },
+  { id: "voices", label: "Secteurs" },
+  { id: "ecosystem", label: "Solutions" },
+  { id: "pricing", label: "Tarification" },
+  { id: "faq", label: "Ressources" },
 ];
 
 export function Navigation() {
@@ -176,7 +176,7 @@ export function Navigation() {
                 onLight ? "btn-primary" : "btn-accent"
               }`}
             >
-              Demander une démo
+              Réserver une démo
             </a>
             <button
               type="button"
@@ -279,7 +279,7 @@ export function Navigation() {
                   onClick={() => setIsMenuOpen(false)}
                   className="btn btn-ghost-light w-full"
                 >
-                  Demander une démo
+                  Réserver une démo
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <Link href="/login" onClick={() => setIsMenuOpen(false)} className="btn btn-ghost-light w-full">
