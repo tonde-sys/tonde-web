@@ -9,8 +9,8 @@ import { EASE } from "@/lib/motion";
 
 const navLinks = [
   { id: "product", label: "Produits" },
-  { id: "voices", label: "Solutions" },
-  { id: "ecosystem", label: "Secteurs" },
+  { id: "ecosystem", label: "Solutions" },
+  { id: "voices", label: "Secteurs" },
   { id: "pricing", label: "Tarification" },
   { id: "faq", label: "Ressources" },
 ];
