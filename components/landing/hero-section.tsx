@@ -165,10 +165,6 @@ export function HeroSection() {
             </span>
             Infrastructure en cours de déploiement
           </span>
-          <span className="hidden items-center gap-2 sm:inline-flex">
-            <MapPin className="h-3.5 w-3.5 text-brand-sprout" />
-            Burundi · RDC · Afrique de l’Est
-          </span>
         </motion.div>
 
         <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-12 lg:py-8">
