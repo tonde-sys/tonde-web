@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Download, Menu, X } from "lucide-react";
 
 import { EASE } from "@/lib/motion";
 
@@ -91,11 +91,11 @@ export function Navigation() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo-tonde.svg"
-              alt="TONDE logo"
+              src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+              alt=""
               width={36}
               height={36}
-              className="shrink-0 rounded-xl"
+              className="h-9 w-9 shrink-0 rounded-[10px] object-cover"
               aria-hidden="true"
             />
             <span className="flex flex-col leading-none">
@@ -152,8 +152,19 @@ export function Navigation() {
 
           <div className="flex items-center gap-2">
             <Link
+              href="/app"
+              className={`hidden items-center gap-1.5 whitespace-nowrap rounded-full border px-3.5 py-2 text-[11px] font-bold uppercase tracking-[0.14em] transition-colors duration-300 sm:inline-flex ${
+                onLight
+                  ? "border-brand-forest/20 text-brand-forest hover:border-brand-forest hover:bg-brand-forest/5"
+                  : "border-white/25 text-white hover:border-brand-sprout hover:text-brand-sprout"
+              }`}
+            >
+              <Download className="h-3.5 w-3.5" aria-hidden="true" />
+              App Android
+            </Link>
+            <Link
               href="/login"
-              className={`hidden whitespace-nowrap rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 sm:block ${
+              className={`hidden whitespace-nowrap rounded-full px-3 py-2 text-[11px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 md:block ${
                 onLight ? "text-brand-soil/65 hover:text-brand-deep" : "text-white/65 hover:text-white"
               }`}
             >
@@ -201,7 +212,14 @@ export function Navigation() {
             <div className="flex items-center justify-between px-5 py-5">
               <span className="flex items-center gap-2.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/logo-tonde.svg" alt="TONDE logo" width={32} height={32} className="shrink-0 rounded-xl" />
+                <img
+                  src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 shrink-0 rounded-[9px] object-cover"
+                  aria-hidden="true"
+                />
                 <span className="font-serif text-lg font-semibold">TONDE</span>
               </span>
               <button
@@ -248,15 +266,23 @@ export function Navigation() {
                 transition={{ duration: 0.55, delay: 0.5, ease: EASE }}
                 className="mt-10 flex flex-col gap-3"
               >
+                <Link
+                  href="/app"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="btn btn-accent w-full"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Télécharger l’app Android (.APK)
+                </Link>
                 <a
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn btn-accent w-full"
+                  className="btn btn-ghost-light w-full"
                 >
                   Demander une démo
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
-                <Link href="/login" className="btn btn-ghost-light w-full">
+                <Link href="/login" onClick={() => setIsMenuOpen(false)} className="btn btn-ghost-light w-full">
                   Espace admin
                 </Link>
               </motion.div>

@@ -121,17 +121,17 @@ dans la sidebar.
 
 ## Visuels
 
-Les scènes documentaires sont générées puis converties en WebP (`sharp`, qualité 82) :
+Les scènes documentaires sont générées puis optimisées pour le web :
 
 | Fichier | Usage |
 |---|---|
 | `hero-agence.webp` | Scène 1 du hero |
 | `hero-guichet.webp` | Scène 2 du hero |
 | `hero-hopital.webp` | Scène 3 du hero |
-| `preuve-mobile.webp` | Scène de preuve (parallaxe) |
+| `Gemini_Generated_Image_wgk2xwwgk2xwwgk2.jpg` | Scène de preuve — chapitre 02 « Le parcours » |
 | `voix-agent.webp` | Section signaux terrain |
 
-Poids total : environ 640 Ko pour cinq scènes. Les maquettes SVG des interfaces restent des visuels conceptuels remplaçables par de vraies captures.
+Poids total : environ 1,1 Mo pour cinq scènes. Les maquettes SVG des interfaces restent des visuels conceptuels remplaçables par de vraies captures.
 
 ## Accessibilité et mouvement
 

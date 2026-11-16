@@ -29,7 +29,15 @@ export function FooterSection() {
       <div className="section-shell">
         <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-20">
           <div className="lg:col-span-5">
-            <a href="#top" className="inline-flex items-baseline gap-3">
+            <a href="#top" className="inline-flex items-center gap-3">
+              <img
+                src="/assets/logo/Glossy%20Blue%20Circuit%20Network%20Icon.png"
+                alt=""
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-xl object-cover"
+                aria-hidden="true"
+              />
               <span className="font-serif text-[2rem] font-semibold leading-none tracking-tight text-brand-deep">
                 TONDE
               </span>
@@ -74,9 +82,27 @@ export function FooterSection() {
 
           <div className="lg:col-span-3">
             <h2 className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-soil/45">
-              Contact
+              Contact & Accès
             </h2>
             <ul className="mt-5 space-y-3">
+              <li>
+                <Link
+                  href="/app"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-forest transition-colors hover:text-brand-deep"
+                >
+                  Télécharger l’app Android (.APK)
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/tv"
+                  className="inline-flex items-center gap-1.5 text-sm text-brand-soil/75 transition-colors hover:text-brand-forest"
+                >
+                  Écran salle d’attente (TV)
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </Link>
+              </li>
               <li>
                 <a
                   href="#contact"
