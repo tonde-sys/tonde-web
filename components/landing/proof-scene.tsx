@@ -10,17 +10,23 @@ const steps = [
   {
     step: "01",
     title: "Prendre son ticket",
-    body: "Depuis le mobile ou le bornier d’accueil, en trois gestes. Le service et la priorité sont choisis dès le départ.",
+    body: "Depuis le mobile ou le bornier d'accueil, en trois gestes. Le service et la priorité sont choisis dès le départ.",
+    image: "/assets/editorial/hero-agence.webp",
+    imageAlt: "Salle d'attente d'une agence bancaire",
   },
   {
     step: "02",
     title: "Suivre sa position",
-    body: "Le temps d’attente estimé se met à jour en continu. L’usager peut s’éloigner sans perdre sa place.",
+    body: "Le temps d'attente estimé se met à jour en continu. L'usager peut s'éloigner sans perdre sa place.",
+    image: "/assets/editorial/hero-hopital.webp",
+    imageAlt: "Patiente suivant sa position sur son téléphone",
   },
   {
     step: "03",
     title: "Être appelé",
-    body: "Le guichet appelle, l’écran de salle confirme, le dossier arrive côté agent. Aucun relais manuel.",
+    body: "Le guichet appelle, l'écran de salle confirme, le dossier arrive côté agent. Aucun relais manuel.",
+    image: "/assets/editorial/hero-guichet.webp",
+    imageAlt: "Agent de guichet appelant un ticket",
   },
 ];
 
@@ -78,12 +84,12 @@ export function ProofScene() {
                 Le parcours
               </span>
               <h2 className="display-lg mt-6 text-white">
-                De la porte d’entrée au guichet,
+                De la porte d'entrée au guichet,
                 <span className="font-normal italic text-brand-light"> un seul fil.</span>
               </h2>
               <p className="mt-6 max-w-xl text-[15px] leading-8 text-white/75">
                 Un ticket pris sur mobile, un agent qui appelle, un écran qui confirme : la même information
-                circule partout, à la même seconde. C’est ce fil continu qui transforme l’attente en file
+                circule partout, à la même seconde. C'est ce fil continu qui transforme l'attente en file
                 organisée.
               </p>
             </motion.div>
@@ -91,18 +97,32 @@ export function ProofScene() {
         </div>
       </div>
 
+      {/* Steps cards avec image de fond */}
       <div className="section-shell -mt-10 pb-4">
         <div className="grid gap-px overflow-hidden rounded-[28px] border border-brand-forest/12 bg-brand-forest/12 md:grid-cols-3">
           {steps.map((item, index) => (
-            <Reveal key={item.step} delay={index * 0.08} className="bg-brand-cream p-7 lg:p-9">
-              <span className="kicker-number text-brand-leaf">{item.step}</span>
-              <h3 className="mt-4 text-[1.3rem] font-semibold leading-snug text-brand-deep">{item.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-brand-soil/70">{item.body}</p>
+            <Reveal key={item.step} delay={index * 0.08} className="relative overflow-hidden">
+              {/* Image de fond */}
+              <img
+                src={item.image}
+                alt={item.imageAlt}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {/* Overlay dégradé pour lisibilité */}
+              <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(10,14,26,0.92)_0%,rgba(10,14,26,0.65)_60%,rgba(10,14,26,0.30)_100%)]" />
+              {/* Contenu */}
+              <div className="relative z-10 p-7 lg:p-9">
+                <span className="kicker-number text-brand-sprout">{item.step}</span>
+                <h3 className="mt-4 text-[1.3rem] font-semibold leading-snug text-white">{item.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-white/70">{item.body}</p>
+              </div>
             </Reveal>
           ))}
         </div>
       </div>
 
+      {/* Guarantees */}
       <div className="section-shell pb-[clamp(5rem,8vw,8rem)] pt-16">
         <div className="grid gap-10 border-t border-brand-forest/15 pt-12 md:grid-cols-3 md:gap-8">
           {guarantees.map((item, index) => {
